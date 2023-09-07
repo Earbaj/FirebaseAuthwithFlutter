@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/screens/authenticate/authentication.dart';
 import 'package:flutterfirebase/screens/home/home.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,10 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<Users?>(context);
     print(user);
 
-    return SignIn();
+    if(user == null){
+      return Authentication();
+    }else{
+      return Home();
+    }
   }
 }
