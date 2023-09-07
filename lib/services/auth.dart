@@ -7,8 +7,14 @@ class Authentication{
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // create user obj based on firebase user
-  Users? _userFromFirebaseUser(User user) {
+  Users? _userFromFirebaseUser(User? user) {
     return user != null ? Users(uid: user.uid) : null;
+  }
+
+  // auth change user stream
+  Stream<Users?> get authusers {
+    return _auth.authStateChanges().map(_userFromFirebaseUser);
+    //.map((FirebaseUser user) => _userFromFirebaseUser(user));
   }
 
   // sign in anon
