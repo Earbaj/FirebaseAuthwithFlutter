@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutterfirebase/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+import '../../services/auth.dart';
 
+class Register extends StatefulWidget {
   final Function toggleView;
-  const SignIn({super.key, required this.toggleView});
+
+  Register({required this.toggleView});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final Authentication _auth = Authentication();
 
@@ -25,18 +26,18 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sign in to Brew Crew'),
+        title: Text('Sign up to Brew Crew'),
         actions: <Widget>[
           ElevatedButton.icon(
             icon: Icon(Icons.person),
-            label: Text('Register'),
+            label: Text('Sign In'),
             onPressed: () => widget.toggleView(),
           ),
         ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child:  Form(
+        child: Form(
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
@@ -55,7 +56,7 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20.0),
               ElevatedButton(
                   child: Text(
-                    'Sign In',
+                    'Register',
                     style: TextStyle(color: Colors.black),
                   ),
                   onPressed: () async {
